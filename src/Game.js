@@ -23,20 +23,37 @@ BasicGame.Game = function (game) {
 */
     //	You can use any of these from any function within this State.
     //	But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
-
+    this.gameBackground = null;
+    this.cursor = null;
+    
+    this.radarBounds = new Phaser.Rectangle(50, 187, 499, 563);
 };
 
 BasicGame.Game.prototype = {
 
 	create: function () {
 
-		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        console.log(this.stage.bounds.width + ', ' + this.stage.bounds.height);
+        
+        this.gameBackground = this.add.image(0, 0, 'planet');
 
+        // cursor needs to go last, probably
+        this.cursor = this.add.sprite(this.radarBounds.centerX,
+                                      this.radarBounds.centerY,
+                                      'cursor');
 	},
 
 	update: function () {
 
-		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+		// move cursor to mouse, within the radar Bounds
+        this.cursor.x = this.math.clamp(this.input.activePointer.x,
+                                        this.radarBounds.left,
+                                        this.radarBounds.right)
+                        - (this.cursor.width / 2);
+        this.cursor.y = this.math.clamp(this.input.activePointer.y,
+                                        this.radarBounds.top,
+                                        this.radarBounds.bottom)
+                        - (this.cursor.height / 2);
 
 	},
 
