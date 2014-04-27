@@ -31,7 +31,7 @@ BasicGame.Preloader.prototype = {
 //		this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
         this.load.image('planet', 'assets/mainscreen.png');
         this.load.image('cursor', 'assets/cursor.png');
-        this.load.image('ping', 'assets/ping.png');
+        this.load.image('ping', 'assets/ping12.png');
 		//	+ lots of other required assets here
 
 	},

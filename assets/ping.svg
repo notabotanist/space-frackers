@@ -15,14 +15,16 @@
    id="svg7208"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="New document 10">
+   sodipodi:docname="ping.svg"
+   inkscape:export-filename="/home/matthew/ludumdare/ld29/assets/ping12.png"
+   inkscape:export-xdpi="67.5"
+   inkscape:export-ydpi="67.5">
   <defs
      id="defs7210">
     <linearGradient
-       inkscape:collect="always"
        id="linearGradient7726">
       <stop
-         style="stop-color:#ff0000;stop-opacity:1;"
+         style="stop-color:#ff4a00;stop-opacity:1;"
          offset="0"
          id="stop7728" />
       <stop
@@ -79,7 +81,7 @@
      transform="translate(0,-1036.3622)">
     <path
        sodipodi:type="arc"
-       style="fill:url(#radialGradient7732);fill-opacity:1;stroke:#3399cc;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:url(#radialGradient7732);fill-opacity:1;stroke:#3399cc;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;opacity:0.781893"
        id="path7216"
        sodipodi:cx="8.1127872"
        sodipodi:cy="8.0766163"
