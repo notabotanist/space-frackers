@@ -26,8 +26,9 @@ BasicGame.Game = function (game) {
     this.gameBackground = null;
     this.cursor = null;
     
-    this.radarBounds = new Phaser.Rectangle(50, 187, 499, 563);
 };
+
+BasicGame.Game.radarBounds = new Phaser.Rectangle(50, 187, 499, 563);
 
 BasicGame.Game.prototype = {
 
@@ -36,24 +37,37 @@ BasicGame.Game.prototype = {
         console.log(this.stage.bounds.width + ', ' + this.stage.bounds.height);
         
         this.gameBackground = this.add.image(0, 0, 'planet');
+        
+        // graboid layer
+        this.screenLayer = this.game.add.group();
+        this.screenLayer.name = 'screenLayer';
+        
+        this.groundModel = new BasicGame.GroundModel(this.screenLayer, [], []);
 
         // cursor needs to go last, probably
-        this.cursor = this.add.sprite(this.radarBounds.centerX,
-                                      this.radarBounds.centerY,
+        this.cursor = this.add.sprite(BasicGame.Game.radarBounds.centerX,
+                                      BasicGame.Game.radarBounds.centerY,
                                       'cursor');
+        this.cursor.anchor.setTo(0.5, 0.5);
+        
+        // DEBUG
+        this.groundModel.addGraboid({x: 300});
+        this.groundModel.addGraboid({x: 300});
 	},
 
 	update: function () {
 
+        this.groundModel.update();
+        
 		// move cursor to mouse, within the radar Bounds
         this.cursor.x = this.math.clamp(this.input.activePointer.x,
-                                        this.radarBounds.left,
-                                        this.radarBounds.right)
-                        - (this.cursor.width / 2);
+                                        BasicGame.Game.radarBounds.left,
+                                        BasicGame.Game.radarBounds.right);
+                        //- (this.cursor.width / 2);
         this.cursor.y = this.math.clamp(this.input.activePointer.y,
-                                        this.radarBounds.top,
-                                        this.radarBounds.bottom)
-                        - (this.cursor.height / 2);
+                                        BasicGame.Game.radarBounds.top,
+                                        BasicGame.Game.radarBounds.bottom);
+                        //- (this.cursor.height / 2);
 
 	},
 
