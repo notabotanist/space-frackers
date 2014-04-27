@@ -32,6 +32,8 @@ BasicGame.Preloader.prototype = {
         this.load.image('planet', 'assets/mainscreen.png');
         this.load.image('cursor', 'assets/cursor.png');
         this.load.image('ping', 'assets/ping12.png');
+        
+        this.load.spritesheet('city', 'assets/cities.png', 50, 60);
 		//	+ lots of other required assets here
 
 	},

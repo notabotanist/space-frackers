@@ -44,12 +44,11 @@ BasicGame.Game.prototype = {
         
         this.groundModel = new BasicGame.GroundModel(this.screenLayer, [], []);
         
-        // DEBUG surface layer
-        this.surfaceModel = {
-            chooseRandomTarget: function () {
-                return { x: 300 };
-            }
-        };
+        // surface layer
+        this.surfaceLayer = this.game.add.group();
+        this.surfaceLayer.name = 'surfaceLayer';
+        
+        this.surfaceModel = new BasicGame.SurfaceModel(4, this.surfaceLayer, this.game.rnd);
 
         // cursor needs to go last, probably
         this.cursor = this.add.sprite(BasicGame.Game.radarBounds.centerX,
@@ -62,6 +61,7 @@ BasicGame.Game.prototype = {
             this.surfaceModel, this.game.time);
         
         // DEBUG
+        this.waveController.waveCount = 1;
         this.waveController.startWave();
 	},
 
