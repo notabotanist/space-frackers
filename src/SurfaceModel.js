@@ -60,7 +60,7 @@ BasicGame.SurfaceModel.prototype = {
         target = this.rnd.pick(aliveCities);
         
         // fallback to first city if they're all dead
-        if (target === null) {
+        if (aliveCities.length === 0) {
             target = this.cities[0];
         }
         
@@ -78,7 +78,7 @@ BasicGame.SurfaceModel.prototype = {
 BasicGame.City = function (sf, df, x, y, group) {
     
     this.startFrame = sf;
-    this.destroyedFrame = sf;
+    this.destroyedFrame = df;
     
     // create alive city
     this.image = group.create(x, y, 'city', sf);

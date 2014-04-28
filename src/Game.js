@@ -48,7 +48,7 @@ BasicGame.Game.prototype = {
         this.surfaceLayer = this.game.add.group();
         this.surfaceLayer.name = 'surfaceLayer';
         
-        this.surfaceModel = new BasicGame.SurfaceModel(4, this.surfaceLayer, this.game.rnd);
+        this.surfaceModel = new BasicGame.SurfaceModel(5, this.surfaceLayer, this.game.rnd);
 
         // cursor needs to go last, probably
         this.cursor = this.add.sprite(BasicGame.Game.radarBounds.centerX,
@@ -61,7 +61,7 @@ BasicGame.Game.prototype = {
             this.surfaceModel, this.game.time);
         
         // DEBUG
-        this.waveController.waveCount = 1;
+        this.waveController.waveCount = 10;
         this.waveController.startWave();
 	},
 

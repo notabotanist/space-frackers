@@ -36,8 +36,13 @@ BasicGame.WaveController.prototype = {
     
     hatchGraboid: function () {
         // collect a valid target from the surface model
-        var target = this.surface.chooseRandomTarget();
+        var target = this.surface.chooseRandomTarget(),
         // dispatch a graboid
-        this.underground.addGraboid(target);
+            g = this.underground.addGraboid(target),
+            f = function () {
+                target.setAlive(false);
+            };
+        // link up a kill event
+        g.onTargetReached.addOnce(f, this); 
     }
 };

@@ -134,12 +134,15 @@ BasicGame.Graboid = function (originx, originy, targetx, targety, tweenman) {
     
     this.targetHit = false;
     
+    this.onTargetReached = new Phaser.Signal();
+    
     // create callback for when tween completes
-    this.onTargetReached = function () {
+    var f_onTargetReached = function () {
         this.targetHit = true;
         console.log('kill target');
+        this.onTargetReached.dispatch();
     };
-    this.tweeny.onComplete.addOnce(this.onTargetReached, this);
+    this.tweeny.onComplete.addOnce(f_onTargetReached, this);
 };
 
 BasicGame.Graboid.prototype = Object.create(BasicGame.Seeker.prototype);
@@ -152,4 +155,10 @@ BasicGame.Graboid.prototype.explode = function () {
     // terminate tweens
     this.tweenx.stop();
     this.tweeny.stop();
+    // other dispose
+    this.dispose();
+};
+
+BasicGame.Graboid.prototype.dispose = function () {
+    this.onTargetReached.dispose();
 };
